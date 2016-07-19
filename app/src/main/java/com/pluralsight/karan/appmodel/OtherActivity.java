@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;import com.pluralsight.karan.appmodel.AirplaneModeReceiver;import com.pluralsight.karan.appmodel.R;
+import android.widget.Button;
+
+import com.pluralsight.karan.appmodel.AirplaneModeReceiver;
+import com.pluralsight.karan.appmodel.R;
 
 public class OtherActivity extends AppCompatActivity {
 
@@ -15,7 +18,7 @@ public class OtherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other);
 
-        Button buttonAirplane = (Button) findViewById(R.id.buttonAirplaneModeMonitor);
+        Button buttonAirplane = (Button) findViewById(R.id.buttonAirplaneModeMonitorActivity);
         buttonAirplane.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,5 +31,20 @@ public class OtherActivity extends AppCompatActivity {
                 Log.d("appmodel", "Registered to monitor airplane mode");
             }
         });
+
+        Button buttonAirplanApp = (Button) findViewById(R.id.buttonMonitorAirplaneModeApp);
+        buttonAirplanApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AirplaneModeReceiver receiver = new AirplaneModeReceiver();
+                receiver.setmLabel("App");
+
+                IntentFilter intentFilter = new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+                OtherActivity.this.getApplicationContext().registerReceiver(receiver,intentFilter);
+
+                Log.d("appmodel", "Registered to monitor airplane mode");
+            }
+        });
     }
+
 }
