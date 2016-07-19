@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.techpalle.karan.mycontacts.ui.OtherActivity"></activity>
+        <activity android:name=".OtherActivity"></activity>
     </application>
 
 </manifest>
